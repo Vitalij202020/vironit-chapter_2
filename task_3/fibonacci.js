@@ -1,30 +1,20 @@
-function fibonacci(n) {
-    if (n <= 2) {
-        return n
+function fibo (n) {
+    const arr = []
+    fibonacci(n)
+
+    function fibonacci(n) {
+        if(n == 0) {
+            return [0, 1];
+        } else {
+            const [prev, next] = fibonacci(n - 1);
+            arr.push(prev)
+            return [next, prev + next];
+        }
     }
-    let temp = fibonacci(n - 1) + fibonacci(n - 2)
-    return temp
+
+    return arr
 }
 
-console.log(fibonacci(13))
-
-// function fib(n) {
-//     let cur = 1, prev = 1;
-//     for (let i = 3; i <= n; i++) {
-//         [cur, prev] = [cur + prev, cur];
-//     }
-//     return cur;
-// }
-//
-// console.log(fib(10))
-//
-function fib2(n) {
-    if(n == 0){
-        return [0, 1];
-    }else{
-        const [prev, next] = fib2(n - 1);
-        return [next, prev + next];
-    }
-}
-
-console.log(fib2(13))
+console.log(fibo(5))
+console.log(fibo(9))
+console.log(fibo(40))
